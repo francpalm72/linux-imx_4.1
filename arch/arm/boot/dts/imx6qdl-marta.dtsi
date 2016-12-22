@@ -13,6 +13,7 @@
 #include <dt-bindings/input/input.h>
 
 / {
+	
 	chosen {
 		stdout-path = &uart3;
 	};
@@ -137,19 +138,107 @@
 	//status = "okay";
 //};
 
-//&ecspi1 {
-	//fsl,spi-num-chipselects = <1>;
-	//cs-gpios = <&gpio3 19 0>;
-	//pinctrl-names = "default";
-	//pinctrl-0 = <&pinctrl_ecspi1>;
-	//status = "okay";
+&ecspi1 {
+  fsl,spi-num-chipselects = <1>;
+  cs-gpios = <&gpio4 9 0>;	//active high
+  pinctrl-names = "default";
+  pinctrl-0 = <&pinctrl_ecspi1_1>;
+  status = "okay";
+  spidev10@0 {
+        compatible = "spidev";
+        spi-max-frequency = <57600000>;
+         reg = <0>;
+        #address-cells = <1>;
+		#size-cells = <1>;
+        };
+};
 
-	//flash: m25p80@0 {
-		//compatible = "sst,sst25vf016b";
-		//spi-max-frequency = <20000000>;
-		//reg = <0>;
-	//};
-//};
+&ecspi3 {
+  fsl,spi-num-chipselects = <4>;
+  cs-gpios = <&gpio4 24 0>, <&gpio4 25 0>, <&gpio4 26 0>, <&gpio4 27 0>;
+  pinctrl-names = "default";
+  pinctrl-0 = <&pinctrl_ecspi3_1>;
+  status = "okay";
+  spidev30@0 {
+        compatible = "spidev";
+        spi-max-frequency = <57600000>;
+        reg = <0>;
+        #address-cells = <1>;
+		#size-cells = <1>;
+        };
+  spidev31@0 {
+        compatible = "spidev";
+        spi-max-frequency = <57600000>;
+         reg = <1>;
+        #address-cells = <1>;
+		#size-cells = <1>;
+        };
+   spidev32@0 {
+        compatible = "spidev";
+        spi-max-frequency = <57600000>;
+         reg = <2>;
+        #address-cells = <1>;
+		#size-cells = <1>;
+        };
+   spidev33@0 {
+        compatible = "spidev";
+        spi-max-frequency = <57600000>;
+         reg = <3>;
+        #address-cells = <1>;
+		#size-cells = <1>;
+        };
+};
+
+&ecspi4 {
+  fsl,spi-num-chipselects = <1>;
+  cs-gpios = <&gpio3 20 0>;	//active high
+  pinctrl-names = "default";
+  pinctrl-0 = <&pinctrl_ecspi4_1>;
+  status = "okay";
+  spidev40@0 {
+        compatible = "spidev";
+        spi-max-frequency = <57600000>;
+         reg = <0>;
+        #address-cells = <1>;
+		#size-cells = <1>;
+        };
+};
+
+&ecspi5 {
+  fsl,spi-num-chipselects = <4>;
+  cs-gpios = <&gpio1 17 0>, <&gpio1 19 0>, <&gpio1 21 0>, <&gpio1 12 0>;
+  pinctrl-names = "default";
+  pinctrl-0 = <&pinctrl_ecspi5_1>;
+  status = "okay";
+  spidev50@0 {
+        compatible = "spidev";
+        spi-max-frequency = <57600000>;
+         reg = <0>;
+        #address-cells = <1>;
+		#size-cells = <1>;
+        };
+  spidev51@0 {
+        compatible = "spidev";
+        spi-max-frequency = <57600000>;
+         reg = <1>;
+        #address-cells = <1>;
+		#size-cells = <1>;
+        };
+   spidev52@0 {
+        compatible = "spidev";
+        spi-max-frequency = <57600000>;
+         reg = <2>;
+        #address-cells = <1>;
+		#size-cells = <1>;
+        };
+   spidev53@0 {
+        compatible = "spidev";
+        spi-max-frequency = <57600000>;
+         reg = <3>;
+        #address-cells = <1>;
+		#size-cells = <1>;
+        };
+};
 
 &fec {
 	pinctrl-names = "default";
@@ -181,12 +270,22 @@
 	//status = "okay";
 //};
 
-//&i2c3 {
-	//clock-frequency = <100000>;
-	//pinctrl-names = "default";
-	//pinctrl-0 = <&pinctrl_i2c3>;
-	//status = "okay";
-//};
+&i2c3 {
+        clock-frequency = <100000>;
+        pinctrl-names = "default";
+		pinctrl-0 = <&pinctrl_i2c3_1>;
+        status = "okay";
+        
+        clocks = <&clks IMX6QDL_CLK_I2C3>;
+        
+        adc: ad7091r@23 {
+			compatible = "adi,ad7091r5";
+			reg = <0x23>;
+			//#address-cells = <1>;
+			//#size-cells = <0>;
+		};
+		
+};
 
 &iomuxc {
 	pinctrl-names = "default";
@@ -196,7 +295,144 @@
 		pinctrl_hog: hoggrp {
 			fsl,pins = <
 				/* SGTL5000 sys_mclk */
-				MX6QDL_PAD_GPIO_0__CCM_CLKO1    0x030b0
+				//MX6QDL_PAD_GPIO_0__CCM_CLKO1    0x030b0
+				
+				
+				//GPIO OUTPUT
+				MX6QDL_PAD_EIM_LBA__GPIO2_IO27 0x4001F0B0 //SPARE_1_OUT_CPU - 59
+				MX6QDL_PAD_EIM_RW__GPIO2_IO26  0x4001F0B0 //SPARE_2_OUT_CPU - 58
+				MX6QDL_PAD_EIM_A23__GPIO6_IO06 0x4001F0B0 //SPARE_3_OUT_CPU - 166
+				MX6QDL_PAD_EIM_A16__GPIO2_IO22 0x4001F0B0 //EASAU_CPU - 54
+				MX6QDL_PAD_EIM_A17__GPIO2_IO21 0x4001F0B0 //EEO_CPU - 53
+				MX6QDL_PAD_EIM_A18__GPIO2_IO20 0x4001F0B0 //ESS_CPU - 52
+				MX6QDL_PAD_EIM_A19__GPIO2_IO19 0x4001F0B0 //EPA_CPU - 51
+				MX6QDL_PAD_EIM_A20__GPIO2_IO18 0x4001F0B0 //EDB_CPU - 50
+				MX6QDL_PAD_EIM_A21__GPIO2_IO17 0x4001F0B0 //EFB_CPU - 49
+				MX6QDL_PAD_EIM_A22__GPIO2_IO16 0x4001F0B0 //EAB_CPU - 48
+				MX6QDL_PAD_EIM_A24__GPIO5_IO04 0x4001F0B0 //INH_SORVOLO_CPU - 132
+				MX6QDL_PAD_EIM_EB2__GPIO2_IO30 0x4001F0B0 //EBT_CPU - 62
+				MX6QDL_PAD_EIM_EB3__GPIO2_IO31 0x4001F0B0 //INH_G_SWITCH_CPU - 63
+				MX6QDL_PAD_EIM_WAIT__GPIO5_IO00 0x4001F0B0 //BIT_L_CPU - 128
+				MX6QDL_PAD_EIM_EB0__GPIO2_IO28 0x4001F0B0 //EBT_SK_CPU - 60
+				MX6QDL_PAD_DI0_DISP_CLK__GPIO4_IO16	0x4001F0B0 //SKR_PWR_CTR_CPU - 112
+				MX6QDL_PAD_DISP0_DAT8__GPIO4_IO29 0x4001F0B0 //CMD_CONSENSOFUOCO_CPU - 125
+				MX6QDL_PAD_DISP0_DAT9__GPIO4_IO30 0x4001F0B0 //CMD_FMP_INT_CPU - 126
+				MX6QDL_PAD_DISP0_DAT11__GPIO5_IO05 0x4001F0B0 //SENS_D00_CPU - 133
+				MX6QDL_PAD_DISP0_DAT12__GPIO5_IO06 0x4001F0B0 //SENS_D01_CPU - 134
+				MX6QDL_PAD_DISP0_DAT16__GPIO5_IO10 0x4001F0B0 //ID_00_CPU - 138
+				MX6QDL_PAD_DISP0_DAT17__GPIO5_IO11 0x4001F0B0 //ID_01_CPU - 139
+				MX6QDL_PAD_KEY_ROW2__GPIO4_IO11 0x4001F0B0 //TFUEL_RANGE_SLC - 107
+				MX6QDL_PAD_GPIO_0__GPIO1_IO00 0x4001F0B0 //MAINT_SK_CPU - 0
+				MX6QDL_PAD_GPIO_9__GPIO1_IO09 0x4001F0B0 //SEL_ANT_CPU - 9
+				MX6QDL_PAD_GPIO_16__GPIO7_IO11 0x4001F0B0 //RESET_L_CPU - 203
+				MX6QDL_PAD_GPIO_17__GPIO7_IO12 0x4001F0B0 //CMD_SPIRA_CPU - 204
+				MX6QDL_PAD_NANDF_WP_B__GPIO6_IO09 0x4001F0B0 //IMX6_SPARE_LED - 169
+				MX6QDL_PAD_NANDF_D4__GPIO2_IO04 0x4001F0B0 //SAFE_SPOLETTA_CPU - 36
+				MX6QDL_PAD_NANDF_D5__GPIO2_IO05 0x4001F0B0 //ENABLE_DL_CPU - 37
+				MX6QDL_PAD_NANDF_D6__GPIO2_IO06 0x4001F0B0 //ESA_CPU - 38
+				MX6QDL_PAD_NANDF_D7__GPIO2_IO07 0x4001F0B0 //ESF_CPU - 39
+				MX6QDL_PAD_SD2_DAT1__GPIO1_IO14 0x4001F0B0 //OK_CPU - 14
+				MX6QDL_PAD_SD2_DAT2__GPIO1_IO13 0x4001F0B0 //GO_SW_CPU - 13
+				
+				MX6QDL_PAD_CSI0_DAT19__GPIO6_IO05 0x4001F0B0 //IT_SL_1 - 165
+				MX6QDL_PAD_DISP0_DAT21__GPIO5_IO15 0x4001F0B0 //IT_SL_2 143
+				MX6QDL_PAD_DISP0_DAT22__GPIO5_IO16 0x4001F0B0 //IT_SL_3 - 144
+				MX6QDL_PAD_DISP0_DAT23__GPIO5_IO17 0x4001F0B0 //IT_SL_4 - 145
+				MX6QDL_PAD_ENET_RX_ER__GPIO1_IO24 0x4001F0B0 //IT_SL_5 - 24
+				MX6QDL_PAD_ENET_TX_EN__GPIO1_IO28 0x4001F0B0 //IT_SL_6 - 28
+				MX6QDL_PAD_ENET_RXD0__GPIO1_IO27 0x4001F0B0 //IT_SL_7 - 27
+				MX6QDL_PAD_ENET_TXD0__GPIO1_IO30 0x4001F0B0 //IT_SL_8 - 30
+				MX6QDL_PAD_ENET_TXD1__GPIO1_IO29 0x4001F0B0 //IT_SL_10 - 29
+				MX6QDL_PAD_GPIO_5__GPIO1_IO05 0x4001F0B0 //ARM_EVENTI - 5
+				MX6QDL_PAD_CSI0_PIXCLK__GPIO5_IO18 0x4001F0B0 //ARM_EVENTO - 146
+				MX6QDL_PAD_CSI0_MCLK__GPIO5_IO19 0x4001F0B0 //ARM_TRACE_CTL - 147
+				MX6QDL_PAD_CSI0_DATA_EN__GPIO5_IO20 0x4001F0B0 //ARM_TRACE_CLK - 148
+				MX6QDL_PAD_CSI0_VSYNC__GPIO5_IO21 0x4001F0B0 //ARM_TRACE_00 - 149
+				MX6QDL_PAD_CSI0_DAT4__GPIO5_IO22 0x4001F0B0 //ARM_TRACE_01 - 150
+				MX6QDL_PAD_CSI0_DAT5__GPIO5_IO23 0x4001F0B0 //ARM_TRACE_02 - 151
+				MX6QDL_PAD_CSI0_DAT6__GPIO5_IO24 0x4001F0B0 //ARM_TRACE_03 - 152
+				MX6QDL_PAD_CSI0_DAT7__GPIO5_IO25 0x4001F0B0 //ARM_TRACE_04 - 153
+				MX6QDL_PAD_CSI0_DAT8__GPIO5_IO26 0x4001F0B0 //ARM_TRACE_05 - 154
+				MX6QDL_PAD_CSI0_DAT9__GPIO5_IO27 0x4001F0B0 //ARM_TRACE_06 - 155
+				MX6QDL_PAD_CSI0_DAT10__GPIO5_IO28 0x4001F0B0 //ARM_TRACE_07 - 156
+				MX6QDL_PAD_CSI0_DAT11__GPIO5_IO29 0x4001F0B0 //ARM_TRACE_08 - 157
+				MX6QDL_PAD_CSI0_DAT12__GPIO5_IO30 0x4001F0B0 //ARM_TRACE_09 - 158
+				MX6QDL_PAD_CSI0_DAT13__GPIO5_IO31 0x4001F0B0 //ARM_TRACE_10 - 159
+				MX6QDL_PAD_CSI0_DAT14__GPIO6_IO00 0x4001F0B0 //ARM_TRACE_11 - 160
+				MX6QDL_PAD_CSI0_DAT15__GPIO6_IO01 0x4001F0B0 //ARM_TRACE_12 - 161
+				MX6QDL_PAD_CSI0_DAT16__GPIO6_IO02 0x4001F0B0 //ARM_TRACE_13 - 162
+				MX6QDL_PAD_CSI0_DAT17__GPIO6_IO03 0x4001F0B0 //ARM_TRACE_14 - 163
+				MX6QDL_PAD_CSI0_DAT18__GPIO6_IO04 0x4001F0B0 //ARM_TRACE_15 - 164
+				MX6QDL_PAD_KEY_ROW3__GPIO4_IO13 0x4001F0B0 //SPARE1_ARTIX7 - 109
+				MX6QDL_PAD_NANDF_CS0__GPIO6_IO11  0x4001F0B0 //SPARE2_ARTIX7 - 171
+				
+			
+				//GPIO INPUT
+				MX6QDL_PAD_EIM_CS0__GPIO2_IO23 0x80000000 //SPARE_1_IN_CPU - 55
+				MX6QDL_PAD_EIM_OE__GPIO2_IO25  0x80000000 //SPARE_2_IN_CPU - 57
+				MX6QDL_PAD_EIM_CS1__GPIO2_IO24 0x80000000 //SPARE_3_IN_CPU - 56
+				MX6QDL_PAD_EIM_A25__GPIO5_IO02 0x80000000 //OK_TH_CPU - 130
+				MX6QDL_PAD_EIM_D29__GPIO3_IO29 0x80000000 //CK_PLUG_0_CPU - 93
+				MX6QDL_PAD_EIM_D30__GPIO3_IO30 0x80000000 //CK_PLUG_1_CPU - 94
+				MX6QDL_PAD_EIM_BCLK__GPIO6_IO31 0x80000000 //LOOPBACK_SIGNAL_CPU - 191
+				
+				MX6QDL_PAD_DI0_PIN2__GPIO4_IO18 0x80000000 //OK_SPOLETTA_CPU - 114
+				MX6QDL_PAD_DI0_PIN3__GPIO4_IO19 0x80000000 //OK_DL_CPU - 115
+				MX6QDL_PAD_DI0_PIN4__GPIO4_IO20 0x80000000 //OK_PS_TH_CPU - 116
+				MX6QDL_PAD_DI0_PIN15__GPIO4_IO17 0x80000000 //OK_GPS_CPU - 113
+				MX6QDL_PAD_DISP0_DAT7__GPIO4_IO28 0x80000000 //STATUS_ANT_CPU - 124
+				MX6QDL_PAD_DISP0_DAT10__GPIO4_IO31 0x80000000 //OK_PS_SWRF_CPU - 127
+				MX6QDL_PAD_DISP0_DAT13__GPIO5_IO07 0x80000000 //FUS_BT1_CPU - 135
+				MX6QDL_PAD_DISP0_DAT14__GPIO5_IO08 0x80000000 //FUS_BT2_CPU - 136
+				MX6QDL_PAD_DISP0_DAT15__GPIO5_IO09 0x80000000 //FAILSAFE_ENABLE_CPU - 137
+				MX6QDL_PAD_DISP0_DAT18__GPIO5_IO12 0x80000000 //MAINT_SEL_CPU - 140
+				MX6QDL_PAD_DISP0_DAT19__GPIO5_IO13 0x80000000 //OK_BT_SK_PSB_CPU - 141
+				MX6QDL_PAD_DISP0_DAT20__GPIO5_IO14 0x80000000 //OK_PS_WCU_CPU - 142
+				
+				MX6QDL_PAD_KEY_COL1__GPIO4_IO08 0x80000000 //FUS_SK_CPU - 104
+				MX6QDL_PAD_KEY_COL2__GPIO4_IO10 0x80000000 //PB_SX_CPU - 106
+				
+				MX6QDL_PAD_GPIO_2__GPIO1_IO02 0x80000000 //TELLBACKBT1_CPU - 2
+				MX6QDL_PAD_GPIO_4__GPIO1_IO04 0x80000000 //CTR_TELLBACKBT2_CPU - 4
+				MX6QDL_PAD_GPIO_7__GPIO1_IO07 0x80000000 //CK_BT2_CPU - 7
+				MX6QDL_PAD_GPIO_8__GPIO1_IO08 0x80000000 //TB2_CPU - 8
+				MX6QDL_PAD_GPIO_18__GPIO7_IO13 0x80000000 //TELLBACKBT2_CPU - 205
+				MX6QDL_PAD_GPIO_19__GPIO4_IO05 0x80000000 //T0_OMB_CPU - 101
+				
+				MX6QDL_PAD_NANDF_CS1__GPIO6_IO14 0x80000000 //TERMINATE_CMD_1_CPU - 174
+				MX6QDL_PAD_NANDF_CS2__GPIO6_IO15 0x80000000 //TERMINATE_CMD_2_CPU - 175
+				MX6QDL_PAD_NANDF_CS3__GPIO6_IO16 0x80000000 //SENSOR_CPU - 176
+				
+				MX6QDL_PAD_NANDF_RB0__GPIO6_IO10 0x80000000 //CK_PRES_BT2_CPU - 170
+				MX6QDL_PAD_NANDF_D0__GPIO2_IO00 0x80000000 //TIMER_SWITCH_CPU - 32
+				MX6QDL_PAD_NANDF_D1__GPIO2_IO01 0x80000000 //STATO_D1_CPU - 33
+				MX6QDL_PAD_NANDF_D2__GPIO2_IO02 0x80000000 //STATO_D2_CPU - 34
+				MX6QDL_PAD_NANDF_D3__GPIO2_IO03 0x80000000 //PB_DX_CPU - 35
+				
+				MX6QDL_PAD_SD2_CMD__GPIO1_IO11 0x80000000 //GO_HW_CPU - 11
+				MX6QDL_PAD_SD2_CLK__GPIO1_IO10 0x80000000 //GO_NOGO_MSL_CPU - 10
+				MX6QDL_PAD_SD2_DAT0__GPIO1_IO15 0x80000000 //GO_NOGO_UA_CPU - 15
+				
+				
+				
+				//BOOT CFG
+				MX6QDL_PAD_EIM_EB1__GPIO2_IO29 0x80000000 //BOOT_CFG_EIM_EB1
+				MX6QDL_PAD_EIM_DA0__GPIO3_IO00 0x80000000 //BOOT_CFG_EIM_DA0
+				MX6QDL_PAD_EIM_DA1__GPIO3_IO01 0x80000000 //BOOT_CFG_EIM_DA1
+				MX6QDL_PAD_EIM_DA2__GPIO3_IO02 0x80000000 //BOOT_CFG_EIM_DA2
+				MX6QDL_PAD_EIM_DA3__GPIO3_IO03 0x80000000 //BOOT_CFG_EIM_DA3
+				MX6QDL_PAD_EIM_DA4__GPIO3_IO04 0x80000000 //BOOT_CFG_EIM_DA4
+				MX6QDL_PAD_EIM_DA5__GPIO3_IO05 0x80000000 //BOOT_CFG_EIM_DA5
+				MX6QDL_PAD_EIM_DA6__GPIO3_IO06 0x80000000 //BOOT_CFG_EIM_DA6
+				MX6QDL_PAD_EIM_DA7__GPIO3_IO07 0x80000000 //BOOT_CFG_EIM_DA7
+				MX6QDL_PAD_EIM_DA8__GPIO3_IO08 0x80000000 //BOOT_CFG_EIM_DA8
+				MX6QDL_PAD_EIM_DA9__GPIO3_IO09 0x80000000 //BOOT_CFG_EIM_DA9
+				MX6QDL_PAD_EIM_DA10__GPIO3_IO10 0x80000000 //BOOT_CFG_EIM_DA10
+				MX6QDL_PAD_EIM_DA11__GPIO3_IO11 0x80000000 //BOOT_CFG_EIM_DA11
+				MX6QDL_PAD_EIM_DA12__GPIO3_IO12 0x80000000 //BOOT_CFG_EIM_DA12
+				MX6QDL_PAD_EIM_DA13__GPIO3_IO13 0x80000000 //BOOT_CFG_EIM_DA13
+				MX6QDL_PAD_EIM_DA14__GPIO3_IO14 0x80000000 //BOOT_CFG_EIM_DA14
+				MX6QDL_PAD_EIM_DA15__GPIO3_IO15 0x80000000 //BOOT_CFG_EIM_DA15
 			>;
 		};
 
@@ -209,14 +445,48 @@
 			//>;
 		//};
 
-		//pinctrl_ecspi1: ecspi1grp {
-			//fsl,pins = <
-				//MX6QDL_PAD_EIM_D17__ECSPI1_MISO		0x100b1
-				//MX6QDL_PAD_EIM_D18__ECSPI1_MOSI		0x100b1
-				//MX6QDL_PAD_EIM_D16__ECSPI1_SCLK		0x100b1
-				//MX6QDL_PAD_EIM_D19__GPIO3_IO19  0x000b1	/* CS */
-			//>;
-		//};
+
+		pinctrl_ecspi1_1: ecspi1grp-1 {
+			 fsl,pins = <
+				MX6QDL_PAD_EIM_D16__ECSPI1_SCLK 0x1b0b1
+				MX6QDL_PAD_EIM_D17__ECSPI1_MISO 0x1b0b1
+				MX6QDL_PAD_EIM_D18__ECSPI1_MOSI 0x1b0b1
+				MX6QDL_PAD_KEY_ROW1__GPIO4_IO09 0x1b0b1        
+				>;
+			};
+
+		pinctrl_ecspi3_1: ecspi3grp-1 {
+			fsl,pins = <
+				MX6QDL_PAD_DISP0_DAT2__ECSPI3_MISO 0x1b0b1
+				MX6QDL_PAD_DISP0_DAT1__ECSPI3_MOSI 0x1b0b1
+				MX6QDL_PAD_DISP0_DAT0__ECSPI3_SCLK 0x1b0b1
+				MX6QDL_PAD_DISP0_DAT3__GPIO4_IO24 0x1b0b1
+				MX6QDL_PAD_DISP0_DAT4__GPIO4_IO25 0x1b0b1
+				MX6QDL_PAD_DISP0_DAT5__GPIO4_IO26 0x1b0b1
+				MX6QDL_PAD_DISP0_DAT6__GPIO4_IO27 0x1b0b1
+			>;
+		};
+
+		pinctrl_ecspi4_1: ecspi4grp-1 {
+			fsl,pins = <
+				MX6QDL_PAD_EIM_D22__ECSPI4_MISO 0x1b0b1
+				MX6QDL_PAD_EIM_D28__ECSPI4_MOSI 0x1b0b1
+				MX6QDL_PAD_EIM_D21__ECSPI4_SCLK 0x1b0b1
+				MX6QDL_PAD_EIM_D20__GPIO3_IO20 0x1b0b1
+			>;
+		};
+
+		pinctrl_ecspi5_1: ecspi5grp-1 {
+			fsl,pins = <
+				MX6QDL_PAD_SD1_DAT0__ECSPI5_MISO 0x1b0b1
+				MX6QDL_PAD_SD1_CMD__ECSPI5_MOSI 0x1b0b1
+				MX6QDL_PAD_SD1_CLK__ECSPI5_SCLK 0x1b0b1
+				MX6QDL_PAD_SD1_DAT1__GPIO1_IO17 0x1b0b1
+				MX6QDL_PAD_SD1_DAT2__GPIO1_IO19 0x1b0b1
+				MX6QDL_PAD_SD1_DAT3__GPIO1_IO21 0x1b0b1
+				MX6QDL_PAD_SD2_DAT3__GPIO1_IO12 0x1b0b1
+			>;
+		};
 
 		pinctrl_enet: enetgrp {
 			fsl,pins = <
@@ -273,12 +543,16 @@
 			//>;
 		//};
 
-		//pinctrl_i2c3: i2c3grp {
-			//fsl,pins = <
-				//MX6QDL_PAD_GPIO_5__I2C3_SCL		0x4001b8b1
-				//MX6QDL_PAD_GPIO_16__I2C3_SDA		0x4001b8b1
-			//>;
-		//};
+		
+		
+		pinctrl_i2c3_1: i2c3grp-1 {
+			fsl,pins = <
+				MX6QDL_PAD_GPIO_3__I2C3_SCL 0x4001b8b1
+				MX6QDL_PAD_GPIO_6__I2C3_SDA 0x4001b8b1
+			>;
+		};
+
+
 
 		//pinctrl_pwm1: pwm1grp {
 			//fsl,pins = <
