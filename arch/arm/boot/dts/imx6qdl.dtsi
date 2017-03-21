@@ -795,10 +795,10 @@
 				clock-names = "main_clk";
 			};
 
-			caam_snvs: caam-snvs@020cc000 {
-				compatible = "fsl,imx6q-caam-snvs";
-				reg = <0x020cc000 0x4000>;
-			};
+			//caam_snvs: caam-snvs@020cc000 {
+				//compatible = "fsl,imx6q-caam-snvs";
+				//reg = <0x020cc000 0x4000>;
+			//};
 
 			snvs: snvs@020cc000 {
 				compatible = "fsl,sec-v4.0-mon", "syscon", "simple-mfd";
