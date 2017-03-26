@@ -1,11 +1,21 @@
 #!/bin/sh
-source /opt/poky/2.2.1/environment-setup-cortexa9hf-neon-poky-linux-gnueabi
-export LDFLAGS=""
-make 
-export LOADADDR=0x10008000
-make uImage
-mkdir -p install_dir
-cp arch/arm/boot/uImage install_dir
-cp arch/arm/boot/dts/imx6q-marta.dtb install_dir
-make modules_install INSTALL_MOD_PATH=./install_dir/
 
+for param in $*
+do 	
+	if [ "$param" = "env" ]; then
+		export CROSS_COMPILE=arm-linux-gnueabihf-
+		export ARCH=arm
+	elif [ "$param" = "clean" ]; then
+		make clean
+		make .config
+	elif [ "$param" = "build" ]; then
+		make
+		make -j4 zImage imx6q-marta.dtb
+		cp arch/arm/boot/zImage ./install_dir/
+		cp arch/arm/boot/dts/imx6q-marta.dtb ./install_dir/
+	else
+		echo "source ./compile.sh env"
+		echo "source ./compile.sh clean"
+		echo "source ./compile.sh build"
+	fi	
+done
