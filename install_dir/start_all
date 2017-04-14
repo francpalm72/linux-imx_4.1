@@ -1,0 +1,638 @@
+#!/bin/sh
+cd /home/root
+mkdir -p gpio
+cd gpio
+
+find -type l -exec rm -rf {} \;
+
+#===========================================
+#   GPIO OUTPUT
+#===========================================
+# EIM_LBA__GPIO2_IO27 (SPARE_1_OUT_CPU)
+echo 59 > /sys/class/gpio/export
+echo out > /sys/class/gpio/gpio59/direction
+echo 0 > /sys/class/gpio/gpio59/value
+ln -sf /sys/class/gpio/gpio59/value OUT_SPARE_1_OUT_CPU
+
+# EIM_RW__GPIO2_IO26  (SPARE_2_OUT_CPU)
+echo 58 > /sys/class/gpio/export
+echo out > /sys/class/gpio/gpio58/direction
+echo 0 > /sys/class/gpio/gpio58/value
+ln -sf /sys/class/gpio/gpio58/value OUT_SPARE_2_OUT_CPU
+
+# EIM_A23__GPIO6_IO06 (SPARE_3_OUT_CPU)
+echo 166 > /sys/class/gpio/export
+echo out > /sys/class/gpio/gpio166/direction
+echo 0 > /sys/class/gpio/gpio166/value
+ln -sf /sys/class/gpio/gpio166/value OUT_SPARE_3_OUT_CPU
+
+# EIM_A16__GPIO2_IO22 (EASAU_CPU)
+echo 54 > /sys/class/gpio/export
+echo out > /sys/class/gpio/gpio54/direction
+echo 0 > /sys/class/gpio/gpio54/value
+ln -sf /sys/class/gpio/gpio54/value OUT_EASAU_CPU
+
+# EIM_A17__GPIO2_IO21 (EEO_CPU)
+echo 53 > /sys/class/gpio/export
+echo out > /sys/class/gpio/gpio53/direction
+echo 0 > /sys/class/gpio/gpio53/value
+ln -sf /sys/class/gpio/gpio53/value OUT_EEO_CPU
+
+# EIM_A18__GPIO2_IO20 (ESS_CPU)
+echo 52 > /sys/class/gpio/export
+echo out > /sys/class/gpio/gpio52/direction
+echo 0 > /sys/class/gpio/gpio52/value
+ln -sf /sys/class/gpio/gpio52/value OUT_ESS_CPU
+
+# EIM_A19__GPIO2_IO19 (EPA_CPU)
+echo 51 > /sys/class/gpio/export
+echo out > /sys/class/gpio/gpio51/direction
+echo 0 > /sys/class/gpio/gpio51/value
+ln -sf /sys/class/gpio/gpio51/value OUT_EPA_CPU
+
+# EIM_A20__GPIO2_IO18 (EDB_CPU)
+echo 50 > /sys/class/gpio/export
+echo out > /sys/class/gpio/gpio50/direction
+echo 0 > /sys/class/gpio/gpio50/value
+ln -sf /sys/class/gpio/gpio50/value OUT_EDB_CPU
+
+# EIM_A21__GPIO2_IO17 (EFB_CPU)
+echo 49 > /sys/class/gpio/export
+echo out > /sys/class/gpio/gpio49/direction
+echo 0 > /sys/class/gpio/gpio49/value
+ln -sf /sys/class/gpio/gpio49/value OUT_EFB_CPU
+
+# EIM_A22__GPIO2_IO16 (EAB_CPU)
+echo 48 > /sys/class/gpio/export
+echo out > /sys/class/gpio/gpio48/direction
+echo 0 > /sys/class/gpio/gpio48/value
+ln -sf /sys/class/gpio/gpio48/value OUT_EAB_CPU
+
+# EIM_A24__GPIO5_IO04 (INH_SORVOLO_CPU)
+echo 132 > /sys/class/gpio/export
+echo out > /sys/class/gpio/gpio132/direction
+echo 0 > /sys/class/gpio/gpio132/value
+ln -sf /sys/class/gpio/gpio132/value OUT_INH_SORVOLO_CPU
+
+# EIM_EB2__GPIO2_IO30 (EBT_CPU)
+echo 62 > /sys/class/gpio/export
+echo out > /sys/class/gpio/gpio62/direction
+echo 0 > /sys/class/gpio/gpio62/value
+ln -sf /sys/class/gpio/gpio62/value OUT_EBT_CPU
+
+# EIM_EB3__GPIO2_IO31 (INH_G_SWITCH_CPU)
+echo 63 > /sys/class/gpio/export
+echo out > /sys/class/gpio/gpio63/direction
+echo 0 > /sys/class/gpio/gpio63/value
+ln -sf /sys/class/gpio/gpio63/value OUT_INH_G_SWITCH_CPU
+
+# EIM_WAIT__GPIO5_IO00 (BIT_L_CPU)
+echo 128 > /sys/class/gpio/export
+echo out > /sys/class/gpio/gpio128/direction
+echo 0 > /sys/class/gpio/gpio128/value
+ln -sf /sys/class/gpio/gpio128/value OUT_BIT_L_CPU
+
+# EIM_EB0__GPIO2_IO28 (EBT_SK_CPU)
+echo 60 > /sys/class/gpio/export
+echo out > /sys/class/gpio/gpio60/direction
+echo 0 > /sys/class/gpio/gpio60/value
+ln -sf /sys/class/gpio/gpio60/value OUT_EBT_SK_CPU
+
+# DI0_DISP_CLK__GPIO4_IO16 (SKR_PWR_CTR_CPU)
+echo 112 > /sys/class/gpio/export
+echo out > /sys/class/gpio/gpio112/direction
+echo 0 > /sys/class/gpio/gpio112/value
+ln -sf /sys/class/gpio/gpio112/value OUT_SKR_PWR_CTR_CPU
+
+# DISP0_DAT8__GPIO4_IO29 (CMD_CONSENSOFUOCO_CPU)
+echo 125 > /sys/class/gpio/export
+echo out > /sys/class/gpio/gpio125/direction
+echo 0 > /sys/class/gpio/gpio125/value
+ln -sf /sys/class/gpio/gpio125/value OUT_CMD_CONSENSOFUOCO_CPU
+
+# DISP0_DAT9__GPIO4_IO30 (CMD_FMP_INT_CPU)
+echo 126 > /sys/class/gpio/export
+echo out > /sys/class/gpio/gpio126/direction
+echo 0 > /sys/class/gpio/gpio126/value
+ln -sf /sys/class/gpio/gpio126/value OUT_CMD_FMP_INT_CPU
+
+# DISP0_DAT11__GPIO5_IO05 (SENS_D00_CPU)
+echo 133 > /sys/class/gpio/export
+echo out > /sys/class/gpio/gpio133/direction
+echo 0 > /sys/class/gpio/gpio133/value
+ln -sf /sys/class/gpio/gpio133/value OUT_SENS_D00_CPU
+
+# DISP0_DAT12__GPIO5_IO06 (SENS_D01_CPU)
+echo 134 > /sys/class/gpio/export
+echo out > /sys/class/gpio/gpio134/direction
+echo 0 > /sys/class/gpio/gpio134/value
+ln -sf /sys/class/gpio/gpio134/value OUT_SENS_D01_CPU
+
+# DISP0_DAT16__GPIO5_IO10 (ID_00_CPU)
+echo 138 > /sys/class/gpio/export
+echo out > /sys/class/gpio/gpio138/direction
+echo 0 > /sys/class/gpio/gpio138/value
+ln -sf /sys/class/gpio/gpio138/value OUT_ID_00_CPU
+
+# DISP0_DAT17__GPIO5_IO11 (ID_01_CPU)
+echo 139 > /sys/class/gpio/export
+echo out > /sys/class/gpio/gpio139/direction
+echo 0 > /sys/class/gpio/gpio139/value
+ln -sf /sys/class/gpio/gpio139/value OUT_ID_01_CPU
+
+# KEY_ROW2__GPIO4_IO11 (TFUEL_RANGE_SLC)
+echo 107 > /sys/class/gpio/export
+echo out > /sys/class/gpio/gpio107/direction
+echo 0 > /sys/class/gpio/gpio107/value
+ln -sf /sys/class/gpio/gpio107/value OUT_TFUEL_RANGE_SLC
+
+# GPIO_0__GPIO1_IO00 (MAINT_SK_CPU)
+echo 0 > /sys/class/gpio/export
+echo out > /sys/class/gpio/gpio0/direction
+echo 0 > /sys/class/gpio/gpio0/value
+ln -sf /sys/class/gpio/gpio0/value OUT_MAINT_SK_CPU
+
+# GPIO_9__GPIO1_IO09 (SEL_ANT_CPU)
+echo 9 > /sys/class/gpio/export
+echo out > /sys/class/gpio/gpio9/direction
+echo 0 > /sys/class/gpio/gpio9/value
+ln -sf /sys/class/gpio/gpio9/value OUT_SEL_ANT_CPU
+
+# GPIO_16__GPIO7_IO11 (RESET_L_CPU)
+echo 203 > /sys/class/gpio/export
+echo out > /sys/class/gpio/gpio203/direction
+echo 0 > /sys/class/gpio/gpio203/value
+ln -sf /sys/class/gpio/gpio203/value OUT_RESET_L_CPU
+
+# GPIO_17__GPIO7_IO12 (CMD_SPIRA_CPU)
+echo 204 > /sys/class/gpio/export
+echo out > /sys/class/gpio/gpio204/direction
+echo 0 > /sys/class/gpio/gpio204/value
+ln -sf /sys/class/gpio/gpio204/value OUT_CMD_SPIRA_CPU
+
+# NANDF_WP_B__GPIO6_IO09 (IMX6_SPARE_LED)
+echo 169 > /sys/class/gpio/export
+echo out > /sys/class/gpio/gpio169/direction
+echo 0 > /sys/class/gpio/gpio169/value
+ln -sf /sys/class/gpio/gpio169/value OUT_IMX6_SPARE_LED
+
+# NANDF_D4__GPIO2_IO04 (SAFE_SPOLETTA_CPU)
+echo 36 > /sys/class/gpio/export
+echo out > /sys/class/gpio/gpio36/direction
+echo 0 > /sys/class/gpio/gpio36/value
+ln -sf /sys/class/gpio/gpio36/value OUT_SAFE_SPOLETTA_CPU
+
+# NANDF_D5__GPIO2_IO05 (ENABLE_DL_CPU)
+echo 37 > /sys/class/gpio/export
+echo out > /sys/class/gpio/gpio37/direction
+echo 0 > /sys/class/gpio/gpio37/value
+ln -sf /sys/class/gpio/gpio37/value OUT_ENABLE_DL_CPU
+
+# NANDF_D6__GPIO2_IO06 (ESA_CPU)
+echo 38 > /sys/class/gpio/export
+echo out > /sys/class/gpio/gpio38/direction
+echo 0 > /sys/class/gpio/gpio38/value
+ln -sf /sys/class/gpio/gpio38/value OUT_ESA_CPU
+
+# NANDF_D7__GPIO2_IO07 (ESF_CPU)
+echo 39 > /sys/class/gpio/export
+echo out > /sys/class/gpio/gpio39/direction
+echo 0 > /sys/class/gpio/gpio39/value
+ln -sf /sys/class/gpio/gpio39/value OUT_ESF_CPU
+
+# SD2_DAT1__GPIO1_IO14 (OK_CPU)
+echo 14 > /sys/class/gpio/export
+echo out > /sys/class/gpio/gpio14/direction
+echo 0 > /sys/class/gpio/gpio14/value
+ln -sf /sys/class/gpio/gpio14/value OUT_OK_CPU
+
+# SD2_DAT2__GPIO1_IO13 (GO_SW_CPU)
+echo 13 > /sys/class/gpio/export
+echo out > /sys/class/gpio/gpio13/direction
+echo 0 > /sys/class/gpio/gpio13/value
+ln -sf /sys/class/gpio/gpio13/value OUT_GO_SW_CPU
+
+
+
+
+
+
+
+# CSI0_DAT19__GPIO6_IO05 (IT_SL_1)
+echo 165 > /sys/class/gpio/export
+echo out > /sys/class/gpio/gpio165/direction
+echo 0 > /sys/class/gpio/gpio165/value
+ln -sf /sys/class/gpio/gpio165/value OUT_IT_SL_1
+
+# DISP0_DAT21__GPIO5_IO15 (IT_SL_2)
+echo 143 > /sys/class/gpio/export
+echo out > /sys/class/gpio/gpio143/direction
+echo 0 > /sys/class/gpio/gpio143/value
+ln -sf /sys/class/gpio/gpio143/value OUT_IT_SL_2
+
+# DISP0_DAT22__GPIO5_IO16 (IT_SL_3)
+echo 144 > /sys/class/gpio/export
+echo out > /sys/class/gpio/gpio144/direction
+echo 0 > /sys/class/gpio/gpio144/value
+ln -sf /sys/class/gpio/gpio144/value OUT_IT_SL_3
+
+# DISP0_DAT23__GPIO5_IO17 (IT_SL_4)
+echo 145 > /sys/class/gpio/export
+echo out > /sys/class/gpio/gpio145/direction
+echo 0 > /sys/class/gpio/gpio145/value
+ln -sf /sys/class/gpio/gpio145/value OUT_IT_SL_4
+
+# ENET_RX_ER__GPIO1_IO24 (IT_SL_5)
+echo 24 > /sys/class/gpio/export
+echo out > /sys/class/gpio/gpio24/direction
+echo 0 > /sys/class/gpio/gpio24/value
+ln -sf /sys/class/gpio/gpio24/value OUT_IT_SL_5
+
+# ENET_TX_EN__GPIO1_IO28 (IT_SL_6)
+echo 28 > /sys/class/gpio/export
+echo out > /sys/class/gpio/gpio28/direction
+echo 0 > /sys/class/gpio/gpio28/value
+ln -sf /sys/class/gpio/gpio28/value OUT_IT_SL_6
+
+# ENET_RXD0__GPIO1_IO27 (IT_SL_7)
+echo 27 > /sys/class/gpio/export
+echo out > /sys/class/gpio/gpio27/direction
+echo 0 > /sys/class/gpio/gpio27/value
+ln -sf /sys/class/gpio/gpio27/value OUT_IT_SL_7
+
+# ENET_TXD0__GPIO1_IO30 (IT_SL_8)
+echo 30 > /sys/class/gpio/export
+echo out > /sys/class/gpio/gpio30/direction
+echo 0 > /sys/class/gpio/gpio30/value
+ln -sf /sys/class/gpio/gpio30/value OUT_IT_SL_8
+
+# ENET_TXD1__GPIO1_IO29 (IT_SL_10)
+echo 29 > /sys/class/gpio/export
+echo out > /sys/class/gpio/gpio29/direction
+echo 0 > /sys/class/gpio/gpio29/value
+ln -sf /sys/class/gpio/gpio29/value OUT_IT_SL_10
+
+# CSI0_PIXCLK__GPIO5_IO18 (ARM_EVENTO)
+echo 146 > /sys/class/gpio/export
+echo out > /sys/class/gpio/gpio146/direction
+echo 0 > /sys/class/gpio/gpio146/value
+ln -sf /sys/class/gpio/gpio146/value OUT_ARM_EVENTO
+
+
+
+# CSI0_DATA_EN__GPIO5_IO20 (ARM_TRACE_CLK)
+echo 148 > /sys/class/gpio/export
+echo out > /sys/class/gpio/gpio148/direction
+echo 0 > /sys/class/gpio/gpio148/value
+ln -sf /sys/class/gpio/gpio148/value OUT_ARM_TRACE_CLK
+
+# CSI0_VSYNC__GPIO5_IO21 (ARM_TRACE_00)
+echo 149 > /sys/class/gpio/export
+echo out > /sys/class/gpio/gpio149/direction
+echo 0 > /sys/class/gpio/gpio149/value
+ln -sf /sys/class/gpio/gpio149/value OUT_ARM_TRACE_00
+
+# CSI0_DAT4__GPIO5_IO22 (ARM_TRACE_01)
+echo 150 > /sys/class/gpio/export
+echo out > /sys/class/gpio/gpio150/direction
+echo 0 > /sys/class/gpio/gpio150/value
+ln -sf /sys/class/gpio/gpio150/value OUT_ARM_TRACE_01
+
+# CSI0_DAT5__GPIO5_IO23 (ARM_TRACE_02)
+echo 151 > /sys/class/gpio/export
+echo out > /sys/class/gpio/gpio151/direction
+echo 0 > /sys/class/gpio/gpio151/value
+ln -sf /sys/class/gpio/gpio151/value OUT_ARM_TRACE_02
+
+# CSI0_DAT6__GPIO5_IO24 (ARM_TRACE_03)
+echo 152 > /sys/class/gpio/export
+echo out > /sys/class/gpio/gpio152/direction
+echo 0 > /sys/class/gpio/gpio152/value
+ln -sf /sys/class/gpio/gpio152/value OUT_ARM_TRACE_03
+
+# CSI0_DAT7__GPIO5_IO25 (ARM_TRACE_04)
+echo 153 > /sys/class/gpio/export
+echo out > /sys/class/gpio/gpio153/direction
+echo 0 > /sys/class/gpio/gpio153/value
+ln -sf /sys/class/gpio/gpio153/value OUT_ARM_TRACE_04
+
+# CSI0_DAT8__GPIO5_IO26 (ARM_TRACE_05)
+echo 154 > /sys/class/gpio/export
+echo out > /sys/class/gpio/gpio154/direction
+echo 0 > /sys/class/gpio/gpio154/value
+ln -sf /sys/class/gpio/gpio154/value OUT_ARM_TRACE_05
+
+# CSI0_DAT9__GPIO5_IO27 (ARM_TRACE_06)
+echo 155 > /sys/class/gpio/export
+echo out > /sys/class/gpio/gpio155/direction
+echo 0 > /sys/class/gpio/gpio155/value
+ln -sf /sys/class/gpio/gpio155/value OUT_ARM_TRACE_06
+
+# CSI0_DAT10__GPIO5_IO28 (ARM_TRACE_07)
+echo 156 > /sys/class/gpio/export
+echo out > /sys/class/gpio/gpio156/direction
+echo 0 > /sys/class/gpio/gpio156/value
+ln -sf /sys/class/gpio/gpio156/value OUT_ARM_TRACE_07
+
+
+
+# KEY_COL3__GPIO4_IO12 (SPARE1_ARTIX7)
+echo 108 > /sys/class/gpio/export
+echo out > /sys/class/gpio/gpio108/direction
+echo 0 > /sys/class/gpio/gpio108/value
+ln -sf /sys/class/gpio/gpio108/value OUT_SPARE1_ARTIX7
+
+# NANDF_CS0__GPIO6_IO11  (SPARE2_ARTIX7)
+echo 171 > /sys/class/gpio/export
+echo out > /sys/class/gpio/gpio171/direction
+echo 0 > /sys/class/gpio/gpio171/value
+ln -sf /sys/class/gpio/gpio171/value OUT_SPARE2_ARTIX7
+
+
+
+# EIM_D23__GPIO3_IO23 (UART3_CTS_B_CPU)
+echo 87 > /sys/class/gpio/export
+echo out > /sys/class/gpio/gpio87/direction
+echo 0 > /sys/class/gpio/gpio87/value
+ln -sf /sys/class/gpio/gpio87/value OUT_UART3_CTS_B_CPU
+
+# NANDF_CLE__GPIO6_IO07 (IT_UC)
+echo 167 > /sys/class/gpio/export
+echo out > /sys/class/gpio/gpio167/direction
+echo 0 > /sys/class/gpio/gpio167/value
+ln -sf /sys/class/gpio/gpio167/value OUT_IT_UC
+
+
+
+
+
+# DISP0_DAT4__GPIO4_IO25 (ECSPI3_SS1)
+echo 121 > /sys/class/gpio/export
+echo out > /sys/class/gpio/gpio121/direction
+echo 0 > /sys/class/gpio/gpio121/value
+ln -sf /sys/class/gpio/gpio121/value OUT_ECSPI3_SS1
+
+# DISP0_DAT5__GPIO4_IO26 (ECSPI3_SS2)
+echo 122 > /sys/class/gpio/export
+echo out > /sys/class/gpio/gpio122/direction
+echo 0 > /sys/class/gpio/gpio122/value
+ln -sf /sys/class/gpio/gpio122/value OUT_ECSPI3_SS2
+
+# DISP0_DAT6__GPIO4_IO27 (ECSPI3_SS3)
+echo 123 > /sys/class/gpio/export
+echo out > /sys/class/gpio/gpio123/direction
+echo 0 > /sys/class/gpio/gpio123/value
+ln -sf /sys/class/gpio/gpio123/value OUT_ECSPI3_SS3
+
+# SD1_DAT2__GPIO1_IO19 (ECSPI5_SS1)
+echo 19 > /sys/class/gpio/export
+echo out > /sys/class/gpio/gpio19/direction
+echo 0 > /sys/class/gpio/gpio19/value
+ln -sf /sys/class/gpio/gpio19/value OUT_ECSPI5_SS1
+
+# SD1_DAT3__GPIO1_IO21 (ECSPI5_SS2)
+echo 21 > /sys/class/gpio/export
+echo out > /sys/class/gpio/gpio21/direction
+echo 0 > /sys/class/gpio/gpio21/value
+ln -sf /sys/class/gpio/gpio21/value OUT_ECSPI5_SS2
+
+# SD2_DAT3__GPIO1_IO12 (ECSPI5_SS3)
+echo 12 > /sys/class/gpio/export
+echo out > /sys/class/gpio/gpio12/direction
+echo 0 > /sys/class/gpio/gpio12/value
+ln -sf /sys/class/gpio/gpio12/value OUT_ECSPI5_SS3
+
+
+#KEY_ROW1__GPIO4_IO09 0x4001F0B0 //ECSPI1_SS0 - 105
+echo 105 > /sys/class/gpio/export
+echo out > /sys/class/gpio/gpio105/direction
+echo 1 > /sys/class/gpio/gpio105/value
+ln -sf /sys/class/gpio/gpio105/value OUT_ECSPI1_SS0
+
+#DISP0_DAT3__GPIO4_IO24 0x4001F0B0 //ECSPI3_SS0 - 120
+echo 120 > /sys/class/gpio/export
+echo out > /sys/class/gpio/gpio120/direction
+echo 1 > /sys/class/gpio/gpio120/value
+ln -sf /sys/class/gpio/gpio120/value OUT_ECSPI3_SS0
+
+#EIM_D20__GPIO3_IO20 0x4001F0B0 //ECSPI4_SS0 - 84
+echo 84 > /sys/class/gpio/export
+echo out > /sys/class/gpio/gpio84/direction
+echo 1 > /sys/class/gpio/gpio84/value
+ln -sf /sys/class/gpio/gpio84/value OUT_ECSPI4_SS0
+
+#SD1_DAT1__GPIO1_IO17 0x4001F0B0 //ECSPI5_SS0 - 17
+echo 17 > /sys/class/gpio/export
+echo out > /sys/class/gpio/gpio17/direction
+echo 1 > /sys/class/gpio/gpio17/value
+ln -sf /sys/class/gpio/gpio17/value OUT_ECSPI5_SS0
+
+
+#===========================================
+#   GPIO INPUT
+#===========================================
+# EIM_CS0__GPIO2_IO23 (SPARE_1_IN_CPU)
+echo 55 > /sys/class/gpio/export
+ln -sf /sys/class/gpio/gpio55/value IN_SPARE_1_IN_CPU
+
+# EIM_OE__GPIO2_IO25  (SPARE_2_IN_CPU)
+echo 57 > /sys/class/gpio/export
+ln -sf /sys/class/gpio/gpio57/value IN_SPARE_2_IN_CPU
+
+# EIM_CS1__GPIO2_IO24 (SPARE_3_IN_CPU)
+echo 56 > /sys/class/gpio/export
+ln -sf /sys/class/gpio/gpio56/value IN_SPARE_3_IN_CPU
+
+# EIM_A25__GPIO5_IO02 (OK_TH_CPU)
+echo 130 > /sys/class/gpio/export
+ln -sf /sys/class/gpio/gpio130/value IN_OK_TH_CPU
+
+# EIM_D29__GPIO3_IO29 (CK_PLUG_0_CPU)
+echo 93 > /sys/class/gpio/export
+ln -sf /sys/class/gpio/gpio93/value IN_CK_PLUG_0_CPU
+
+# EIM_D30__GPIO3_IO30 (CK_PLUG_1_CPU)
+echo 94 > /sys/class/gpio/export
+ln -sf /sys/class/gpio/gpio94/value IN_CK_PLUG_1_CPU
+
+# EIM_BCLK__GPIO6_IO31 (LOOPBACK_SIGNAL_CPU)
+echo 191 > /sys/class/gpio/export
+ln -sf /sys/class/gpio/gpio191/value IN_LOOPBACK_SIGNAL_CPU
+
+# DI0_PIN2__GPIO4_IO18 (OK_SPOLETTA_CPU)
+echo 114 > /sys/class/gpio/export
+ln -sf /sys/class/gpio/gpio114/value IN_OK_SPOLETTA_CPU
+
+# DI0_PIN3__GPIO4_IO19 (OK_DL_CPU)
+echo 115 > /sys/class/gpio/export
+ln -sf /sys/class/gpio/gpio115/value IN_OK_DL_CPU
+
+# DI0_PIN4__GPIO4_IO20 (OK_PS_TH_CPU)
+echo 116 > /sys/class/gpio/export
+ln -sf /sys/class/gpio/gpio116/value IN_OK_PS_TH_CPU
+
+# DI0_PIN15__GPIO4_IO17 (OK_GPS_CPU)
+echo 113 > /sys/class/gpio/export
+ln -sf /sys/class/gpio/gpio113/value IN_OK_GPS_CPU
+
+# DISP0_DAT7__GPIO4_IO28 (STATUS_ANT_CPU)
+echo 124 > /sys/class/gpio/export
+ln -sf /sys/class/gpio/gpio124/value IN_STATUS_ANT_CPU
+
+# DISP0_DAT10__GPIO4_IO31 (OK_PS_SWRF_CPU)
+echo 127 > /sys/class/gpio/export
+ln -sf /sys/class/gpio/gpio127/value IN_OK_PS_SWRF_CPU
+
+# DISP0_DAT13__GPIO5_IO07 (FUS_BT1_CPU)
+echo 135 > /sys/class/gpio/export
+ln -sf /sys/class/gpio/gpio135/value IN_FUS_BT1_CPU
+
+# DISP0_DAT14__GPIO5_IO08 (FUS_BT2_CPU)
+echo 136 > /sys/class/gpio/export
+ln -sf /sys/class/gpio/gpio136/value IN_FUS_BT2_CPU
+
+# DISP0_DAT15__GPIO5_IO09 (FAILSAFE_ENABLE_CPU)
+echo 137 > /sys/class/gpio/export
+ln -sf /sys/class/gpio/gpio137/value IN_FAILSAFE_ENABLE_CPU
+
+# DISP0_DAT18__GPIO5_IO12 (MAINT_SEL_CPU)
+echo 140 > /sys/class/gpio/export
+ln -sf /sys/class/gpio/gpio140/value IN_MAINT_SEL_CPU
+
+# DISP0_DAT19__GPIO5_IO13 (OK_BT_SK_PSB_CPU)
+echo 141 > /sys/class/gpio/export
+ln -sf /sys/class/gpio/gpio141/value IN_OK_BT_SK_PSB_CPU
+
+# DISP0_DAT20__GPIO5_IO14 (OK_PS_WCU_CPU)
+echo 142 > /sys/class/gpio/export
+ln -sf /sys/class/gpio/gpio142/value IN_OK_PS_WCU_CPU
+
+# KEY_COL1__GPIO4_IO08 (FUS_SK_CPU)
+echo 104 > /sys/class/gpio/export
+ln -sf /sys/class/gpio/gpio104/value IN_FUS_SK_CPU
+
+# KEY_COL2__GPIO4_IO10 (PB_SX_CPU)
+echo 106 > /sys/class/gpio/export
+ln -sf /sys/class/gpio/gpio106/value IN_PB_SX_CPU
+
+# GPIO_2__GPIO1_IO02 (TELLBACKBT1_CPU)
+echo 2 > /sys/class/gpio/export
+ln -sf /sys/class/gpio/gpio2/value IN_TELLBACKBT1_CPU
+
+# GPIO_4__GPIO1_IO04 (CTR_TELLBACKBT2_CPU)
+echo 4 > /sys/class/gpio/export
+ln -sf /sys/class/gpio/gpio4/value IN_CTR_TELLBACKBT2_CPU
+
+# GPIO_7__GPIO1_IO07 (CK_BT2_CPU)
+echo 7 > /sys/class/gpio/export
+ln -sf /sys/class/gpio/gpio7/value IN_CK_BT2_CPU
+
+# GPIO_8__GPIO1_IO08 (TB2_CPU)
+echo 8 > /sys/class/gpio/export
+ln -sf /sys/class/gpio/gpio8/value IN_TB2_CPU
+
+# GPIO_18__GPIO7_IO13 (TELLBACKBT2_CPU)
+echo 205 > /sys/class/gpio/export
+ln -sf /sys/class/gpio/gpio205/value IN_TELLBACKBT2_CPU
+
+# GPIO_19__GPIO4_IO05 (T0_OMB_CPU)
+echo 101 > /sys/class/gpio/export
+ln -sf /sys/class/gpio/gpio101/value IN_T0_OMB_CPU
+
+# NANDF_CS1__GPIO6_IO14 (TERMINATE_CMD_1_CPU)
+echo 174 > /sys/class/gpio/export
+ln -sf /sys/class/gpio/gpio174/value IN_TERMINATE_CMD_1_CPU
+
+# NANDF_CS2__GPIO6_IO15 (TERMINATE_CMD_2_CPU)
+echo 175 > /sys/class/gpio/export
+ln -sf /sys/class/gpio/gpio175/value IN_TERMINATE_CMD_2_CPU
+
+# NANDF_CS3__GPIO6_IO16 (SENSOR_CPU)
+echo 176 > /sys/class/gpio/export
+ln -sf /sys/class/gpio/gpio176/value IN_SENSOR_CPU
+
+# NANDF_RB0__GPIO6_IO10 (CK_PRES_BT2_CPU)
+echo 170 > /sys/class/gpio/export
+ln -sf /sys/class/gpio/gpio170/value IN_CK_PRES_BT2_CPU
+
+# NANDF_D0__GPIO2_IO00 (TIMER_SWITCH_CPU)
+echo 32 > /sys/class/gpio/export
+ln -sf /sys/class/gpio/gpio32/value IN_TIMER_SWITCH_CPU
+
+# NANDF_D1__GPIO2_IO01 (STATO_D1_CPU)
+echo 33 > /sys/class/gpio/export
+ln -sf /sys/class/gpio/gpio33/value IN_STATO_D1_CPU
+
+# NANDF_D2__GPIO2_IO02 (STATO_D2_CPU)
+echo 34 > /sys/class/gpio/export
+ln -sf /sys/class/gpio/gpio34/value IN_STATO_D2_CPU
+
+# NANDF_D3__GPIO2_IO03 (PB_DX_CPU)
+echo 35 > /sys/class/gpio/export
+ln -sf /sys/class/gpio/gpio35/value IN_PB_DX_CPU
+
+# SD2_CMD__GPIO1_IO11 (GO_HW_CPU)
+echo 11 > /sys/class/gpio/export
+ln -sf /sys/class/gpio/gpio11/value IN_GO_HW_CPU
+
+# SD2_CLK__GPIO1_IO10 (GO_NOGO_MSL_CPU)
+echo 10 > /sys/class/gpio/export
+ln -sf /sys/class/gpio/gpio10/value IN_GO_NOGO_MSL_CPU
+
+# SD2_DAT0__GPIO1_IO15 (GO_NOGO_UA_CPU)
+echo 15 > /sys/class/gpio/export
+ln -sf /sys/class/gpio/gpio15/value IN_GO_NOGO_UA_CPU
+
+
+
+# EIM_D31__GPIO3_IO31 (UART3_RTS_B_CPU)
+echo 95 > /sys/class/gpio/export
+ln -sf /sys/class/gpio/gpio95/value IN_UART3_RTS_B_CPU
+
+
+
+# CSI0_DAT11__GPIO5_IO29 (ARM_TRACE_08)
+echo 157 > /sys/class/gpio/export
+ln -sf /sys/class/gpio/gpio157/value IN_ARM_TRACE_08
+
+# CSI0_DAT12__GPIO5_IO30 (ARM_TRACE_09)
+echo 158 > /sys/class/gpio/export
+ln -sf /sys/class/gpio/gpio158/value IN_ARM_TRACE_09
+
+# CSI0_DAT13__GPIO5_IO31 (ARM_TRACE_10)
+echo 159 > /sys/class/gpio/export
+ln -sf /sys/class/gpio/gpio159/value IN_ARM_TRACE_10
+
+# CSI0_DAT14__GPIO6_IO00 (ARM_TRACE_11)
+echo 160 > /sys/class/gpio/export
+ln -sf /sys/class/gpio/gpio160/value IN_ARM_TRACE_11
+
+# CSI0_DAT15__GPIO6_IO01 (ARM_TRACE_12)
+echo 161 > /sys/class/gpio/export
+ln -sf /sys/class/gpio/gpio161/value IN_ARM_TRACE_12
+
+# CSI0_DAT16__GPIO6_IO02 (ARM_TRACE_13)
+echo 162 > /sys/class/gpio/export
+ln -sf /sys/class/gpio/gpio162/value IN_ARM_TRACE_13
+
+# CSI0_DAT17__GPIO6_IO03 (ARM_TRACE_14)
+echo 163 > /sys/class/gpio/export
+ln -sf /sys/class/gpio/gpio163/value IN_ARM_TRACE_14
+
+# CSI0_DAT18__GPIO6_IO04 (ARM_TRACE_15)
+echo 164 > /sys/class/gpio/export
+ln -sf /sys/class/gpio/gpio164/value IN_ARM_TRACE_15
+
+# GPIO_5__GPIO1_IO05 (ARM_EVENTI)
+echo 5 > /sys/class/gpio/export
+ln -sf /sys/class/gpio/gpio5/value IN_ARM_EVENTI
+
+# CSI0_MCLK__GPIO5_IO19 (ARM_TRACE_CTL)
+echo 147 > /sys/class/gpio/export
+ln -sf /sys/class/gpio/gpio147/value IN_ARM_TRACE_CTL
+
+
+cd /home/root
+./blink_led &
+./udp_server &
+

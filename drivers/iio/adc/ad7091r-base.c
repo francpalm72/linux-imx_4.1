@@ -32,8 +32,9 @@
 /* AD7091R_REG_CONF */
 #define REG_CONF_AUTO   BIT(8)
 #define REG_CONF_CMD    BIT(10)
+#define REG_CONF_VREF    BIT(0)
 
-#define REG_CONF_MODE_MASK  (REG_CONF_AUTO | REG_CONF_CMD)
+#define REG_CONF_MODE_MASK  (REG_CONF_AUTO | REG_CONF_CMD | REG_CONF_VREF)
 
 enum ad7091r_mode {
 	AD7091R_MODE_SAMPLE,
@@ -60,7 +61,7 @@ static int ad7091r_set_mode(struct ad7091r_state *st, enum ad7091r_mode mode)
 		break;
 	case AD7091R_MODE_COMMAND:
 		ret = regmap_update_bits(st->map, AD7091R_REG_CONF,
-				REG_CONF_MODE_MASK, REG_CONF_CMD);
+				REG_CONF_MODE_MASK, REG_CONF_CMD | REG_CONF_VREF);
 		break;
 	case AD7091R_MODE_AUTOCYCLE:
 		ret = regmap_update_bits(st->map, AD7091R_REG_CONF,
