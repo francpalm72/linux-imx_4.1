@@ -404,10 +404,10 @@ ln -sf /sys/class/gpio/gpio12/value OUT_ECSPI5_SS3
 
 
 #KEY_ROW1__GPIO4_IO09 0x4001F0B0 //ECSPI1_SS0 - 105
-echo 105 > /sys/class/gpio/export
-echo out > /sys/class/gpio/gpio105/direction
-echo 1 > /sys/class/gpio/gpio105/value
-ln -sf /sys/class/gpio/gpio105/value OUT_ECSPI1_SS0
+#echo 105 > /sys/class/gpio/export
+#echo out > /sys/class/gpio/gpio105/direction
+#echo 1 > /sys/class/gpio/gpio105/value
+#ln -sf /sys/class/gpio/gpio105/value OUT_ECSPI1_SS0
 
 #DISP0_DAT3__GPIO4_IO24 0x4001F0B0 //ECSPI3_SS0 - 120
 echo 120 > /sys/class/gpio/export
