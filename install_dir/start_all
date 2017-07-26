@@ -140,30 +140,6 @@ echo out > /sys/class/gpio/gpio2/direction
 echo 0 > /sys/class/gpio/gpio2/value
 ln -sf /sys/class/gpio/gpio2/value OUT_IT_UC
 
-#GPIO_4__GPIO1_IO04     R6  IT_SL_1 - 4
-echo 4 > /sys/class/gpio/export
-echo out > /sys/class/gpio/gpio4/direction
-echo 0 > /sys/class/gpio/gpio4/value
-ln -sf /sys/class/gpio/gpio4/value OUT_IT_SL_1
-
-#GPIO_7__GPIO1_IO07     R3  IT_SL_2 - 7
-echo 7 > /sys/class/gpio/export
-echo out > /sys/class/gpio/gpio7/direction
-echo 0 > /sys/class/gpio/gpio7/value
-ln -sf /sys/class/gpio/gpio7/value OUT_IT_SL_2
-
-#GPIO_8__GPIO1_IO08     R5  IT_SL_3 - 8
-echo 8 > /sys/class/gpio/export
-echo out > /sys/class/gpio/gpio8/direction
-echo 0 > /sys/class/gpio/gpio8/value
-ln -sf /sys/class/gpio/gpio8/value OUT_IT_SL_3
-
-#GPIO_9__GPIO1_IO09     T2  IT_SL_4 - 9
-echo 9 > /sys/class/gpio/export
-echo out > /sys/class/gpio/gpio9/direction
-echo 0 > /sys/class/gpio/gpio9/value
-ln -sf /sys/class/gpio/gpio9/value OUT_IT_SL_4
-
 #CSI0_PIXCLK__GPIO5_IO18  P1  ARM_EVENTO - 146
 echo 146 > /sys/class/gpio/export
 echo out > /sys/class/gpio/gpio146/direction
@@ -523,6 +499,22 @@ ln -sf /sys/class/gpio/gpio1/value IN_GO_NOGO_MSL_CPU
 #DISP0_DAT23__GPIO5_IO17   W24   GO_NOGO_UA_CPU - 145
 echo 145 > /sys/class/gpio/export
 ln -sf /sys/class/gpio/gpio145/value IN_GO_NOGO_UA_CPU
+
+#GPIO_4__GPIO1_IO04     R6  IT_SL_1 - 4
+echo 4 > /sys/class/gpio/export
+ln -sf /sys/class/gpio/gpio4/value IN_IT_SL_1
+
+#GPIO_7__GPIO1_IO07     R3  IT_SL_2 - 7
+echo 7 > /sys/class/gpio/export
+ln -sf /sys/class/gpio/gpio7/value IN_IT_SL_2
+
+#GPIO_8__GPIO1_IO08     R5  IT_SL_3 - 8
+echo 8 > /sys/class/gpio/export
+ln -sf /sys/class/gpio/gpio8/value IN_IT_SL_3
+
+#GPIO_9__GPIO1_IO09     T2  IT_SL_4 - 9
+echo 9 > /sys/class/gpio/export
+ln -sf /sys/class/gpio/gpio9/value IN_IT_SL_4
 
 #SD2_CMD__GPIO1_IO11   F19   IT_SL_5 - 11
 echo 11 > /sys/class/gpio/export
