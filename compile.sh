@@ -3,8 +3,8 @@
 for param in $*
 do 	
 	if [ "$param" = "env" ]; then
-		export CROSS_COMPILE=arm-linux-gnueabihf-
-		export ARCH=arm
+		source /opt/poky/2.2.2/environment-setup-cortexa9hf-neon-poky-linux-gnueabi
+		export LDFLAGS=""
 	elif [ "$param" = "clean" ]; then
 		make clean
 		make imx6q_marta_defconfig
