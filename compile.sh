@@ -12,6 +12,10 @@ do
 		make -j4 zImage imx6q-marta.dtb
 		cp arch/arm/boot/zImage ./install_dir/
 		cp arch/arm/boot/dts/imx6q-marta.dtb ./install_dir/
+	elif [ "$param" = "dtb" ]; then
+		cpp -nostdinc -I include -I arch  -undef -x assembler-with-cpp ./arch/arm/boot/dts/imx6q-marta.dts ./arch/arm/boot/dts/imx6q-marta.dts.preprocessed
+		dtc -I dts -O dtb -o ./arch/arm/boot/dts/imx6q-marta.dtb ./arch/arm/boot/dts/imx6q-marta.dts.preprocessed
+		cp ./arch/arm/boot/dts/imx6q-marta.dtb ./install_dir
 	else
 		echo "source ./compile.sh env"
 		echo "source ./compile.sh clean"
