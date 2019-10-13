@@ -16,6 +16,8 @@ do
 		cpp -nostdinc -I include -I arch  -undef -x assembler-with-cpp ./arch/arm/boot/dts/imx6q-marta.dts ./arch/arm/boot/dts/imx6q-marta.dts.preprocessed
 		dtc -I dts -O dtb -o ./arch/arm/boot/dts/imx6q-marta.dtb ./arch/arm/boot/dts/imx6q-marta.dts.preprocessed
 		cp ./arch/arm/boot/dts/imx6q-marta.dtb ./install_dir
+		rm ./arch/arm/boot/dts/imx6q-marta.dtb
+		rm ./arch/arm/boot/dts/imx6q-marta.dts.preprocessed
 	else
 		echo "source ./compile.sh env"
 		echo "source ./compile.sh clean"
